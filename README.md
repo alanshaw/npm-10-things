@@ -7,3 +7,4 @@ npm-10-things
 3. `npm link`
 4. `.npm`
 5. Search caches index, retrieves only changed data since last search
+6. Configure all the things!
