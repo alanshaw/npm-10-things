@@ -8,3 +8,4 @@ npm-10-things
 4. `.npm`
 5. Search caches index, retrieves only changed data since last search
 6. Configure all the things!
+7. "latest" and other tags `npm tag`
