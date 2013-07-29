@@ -9,3 +9,4 @@ npm-10-things
 5. Search caches index, retrieves only changed data since last search
 6. Configure all the things!
 7. "latest" and other tags `npm tag`
+8. `npm version 1.2.3` - It’ll open up your package.json file, change the version to 1.2.3, git add it, git commit it, and git tag v1.2.3 it.
