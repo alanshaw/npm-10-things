@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>npm 10 things</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/npm.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>npm 10 things</h1>
+          <p>
+            <small>Created by <a href="http://gthub.com/alanshaw">Alan Shaw</a> / <a href="http://twitter.com/_alanshaw">@_alanshaw</a></small>
+          </p>
+        </section>
+
+        <section>
+          <h2>zero</h2>
+          <p>Backed by <a href="http://couchdb.apache.org/">couchdb</a></p>
+          <p><a href="http://isaacs.iriscouch.com/registry">http://isaacs.iriscouch.com/registry</a></p>
+          <p><small>NoSQL, JSON documents, query using JavaScript &amp; MapReduce, access via HTTP</small></p>
+        </section>
+        
+        <section>
+          <section>
+            <h2>one</h2>
+            <p>It's just a node module. Use it programmatically.</p>
+          </section>
+          <section>
+            <pre><code data-trim contenteditable class="javascript">
+var npm = require("npm")
+
+npm.load({}, function (er) {
+  if (er) return console.error(er)
+
+  var cmdArgs = ["async"]
+
+  // Install the async module ...or do whatever - view, search, update, test 
+  npm.commands.install(cmdArgs, function (er) {
+    if (er) return console.error(er)
+
+    console.log("async installed")
+  })
+})
+            </code></pre>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>two</h2>
+            <p>Configure all the things!</p>
+            <img src="lib/img/all-the-things.png" alt="All the things!"/>
+          </section>
+          <section>
+            <p><strong>Configure all the things?</strong></p><br />
+            <ul>
+              <li>Command line flags
+                <ul>
+                  <li><code>--foo=bar</code></li>
+                </ul><br />
+              </li>
+              <li>Environment vars
+                <ul>
+                  <li><code>NPM_CONFIG_FOO=bar</code></li>
+                </ul><br />
+              </li>
+              <li>npmrc files 
+                <ul>
+                  <li><code>~/.npmrc</code></li>
+                  <li><code>$PREFIX/npmrc</code></li>
+                  <li><code>/path/to/npm/npmrc</code></li>
+                </ul>
+            </ul>
+          </section>
+          <section>
+            <p><strong>Configure ALL the things?</strong></p><br/>
+            <ul>
+              <li>Cache location</li>
+              <li>Registry URL</li>
+              <li>YES</li>
+            </ul>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>three</h2>
+            <p>Run your own <span style="font-family: 'Gubblebum Blocky';color: #CC3D33;">npm</span> ?</p>
+          </section>
+          <section>
+            <p>Get you an <a href="https://www.nodejitsu.com/enterprise/npm/">enterprise one from nodejitsu</a></p>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>four</h2>
+            <p><code>npm link [module]</code></p>
+            <p><small>Create a globally installed symlink in &nbsp; <strong><code>node_modules/[module]</code></strong> &nbsp; to &nbsp; <strong><code>/path/to/[module]</code></strong></small></p>
+          </section>
+          <section>
+            <p>First:</p>
+            <pre><code data-trim contenteditable>
+cd /path/to/[module]
+npm link
+            </code></pre>
+            <p>Then:</p>
+            <pre><code data-trim contenteditable>
+npm link [module]
+# node_modules/[module] now symlinked to /path/to/[module]
+            </code></pre>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>five</h2>
+            <p>The npm cache folder <code>~/.npm</code></p>
+          </section>
+          <section>
+            <p><strong><code>cache-max</code></strong></p>
+            <p>The maximum time (in seconds) to keep items in the registry cache before re-checking against the registry.</p>
+            <p>Default is infinity unless you...</p>
+            <p><code>npm cache clean</code></p>
+            <img src="lib/img/clean-all-the-things.png" alt="Clean all the things?"/>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>six</h2>
+            <p><code>npm search [term]</code></p> 
+            <p>...caches text in</p>
+            <p><code>~/.npm/-/all/.cache.json</code></p>
+          </section>
+          <section>
+            <p>...and searches through it with regular expressions</p>
+          </section>
+          <section>
+            <p>It's 14MB</p>
+            <img src="lib/img/batdog.jpg" alt="Batdog!"/>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>seven</h2>
+            <p><code>npm tag &lt;name&gt;@&lt;version&gt; [&lt;tag&gt;]</code></p>
+            <p>Identify a version by name.</p>
+            <p>&quot;latest&quot; is an auto tag, that gets updated to point to the latest version</p>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>eight</h2>
+            <p>Depend on a version, a tag, an archive, or a git repo</p>
+            <pre><code data-trim contenteditable>
+{
+  "dependencies": {
+    "foo": "~1.2.3",
+    "bar": "latest",
+    "baz": "http://asdf.com/archive.tar.gz",
+    "boz": "git://github.com/user/project.git#commit"
+  }
+}
+            </code></pre>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h2>nine</h2>
+            <p><code>npm version 1.2.3</code></p>
+          </section>
+          <section>
+            <p>It'll open up your package.json file, change the version to 1.2.3, git add it, git commit it, and git tag v1.2.3 it.</p>
+            <p>ERMAHGERD.</p>
+          </section>
+        </section>
+
+        <section>
+          <h1>end</h1>
+          <p><small>
+            <a href="http://github.com/alanshaw/npm-10-things">github.com/alanshaw/npm-10-things</a>
+            <br/>
+            <a href="http://twitter.com/alanshaw">@_alanshaw</a>
+          </small></p>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
